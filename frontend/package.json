@@ -1,1 +1,12 @@
-
+{
+  "name": "igaming-frontend",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "react": "^18",
+    "axios": "^1.x",
+    "socket.io-client": "^4.x"
+  }
+}
