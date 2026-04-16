@@ -1,15 +1,32 @@
 {
-  "name": "igaming-backend",
-  "type": "module",
+  "name": "suparwincasino-saas",
+  "version": "1.0.0",
+  "description": "Casino SaaS platform (frontend + backend)",
+  "main": "server.js",
   "scripts": {
-    "dev": "node server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "npm run build:frontend",
+    "build:frontend": "webpack --mode production",
+    "test": "echo \"No tests yet\" && exit 0"
   },
   "dependencies": {
-    "express": "^4.19.0",
-    "mongoose": "^8.x",
-    "redis": "^4.x",
-    "socket.io": "^4.x",
-    "jsonwebtoken": "^9.x"
-  }
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "mongoose": "^8.5.0",
+    "socket.io": "^4.7.5",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "Suparwincasino Team",
+  "license": "UNLICENSED"
 }
