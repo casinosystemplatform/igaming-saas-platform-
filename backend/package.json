@@ -1,1 +1,15 @@
-
+{
+  "name": "igaming-backend",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.0",
+    "mongoose": "^8.x",
+    "redis": "^4.x",
+    "socket.io": "^4.x",
+    "jsonwebtoken": "^9.x"
+  }
+}
