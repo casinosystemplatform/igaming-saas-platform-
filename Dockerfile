@@ -1,16 +1,5 @@
-services:
-  backend:
-    build: ./backend
-    ports:
-      - "6700:6700"
+FROM node:18 as build
+RUN npm run build
 
-  frontend:
-    build: ./frontend
-    ports:
-      - "80:80"
-
-  mongo:
-    image: mongo:6
-
-  redis:
-    image: redis:7
+FROM nginx
+COPY dist /usr/share/nginx/html
