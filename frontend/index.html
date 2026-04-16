@@ -1,44 +1,120 @@
 <!doctype html>
-<html lang="EN" content="notranslate">
- <head>
-  <meta charset="utf-8">
-  <meta name="google" content="notranslate">
-  <meta name="theme-color" content="#000000">
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Casino SaaS Demo</title>
 
-  <title>Suparwincasino</title>
-  <meta name="title" content="Suparwincasino">
+<style>
+body {
+  margin:0;
+  font-family: Arial;
+  background:#0b0f1a;
+  color:white;
+  text-align:center;
+}
 
-  <meta name="viewport" content="viewport-fit=cover,width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+.container {
+  max-width:400px;
+  margin:50px auto;
+  padding:20px;
+  background:#141b2d;
+  border-radius:12px;
+  box-shadow:0 0 20px rgba(0,255,200,0.2);
+}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;800&display=swap" rel="stylesheet">
+h1 { color:#00ffcc; }
 
-  <link rel="manifest" href="/m/manifest.json?v=3495">
-  <link rel="shortcut icon" href="/m/favicon.png?v=3495">
+.slot {
+  font-size:50px;
+  margin:20px 0;
+}
 
-  <script>
-    document.title = "Suparwincasino";
-    var brand = "Suparwincasino_2026";
-    console.log("brand", brand);
-  </script>
+button {
+  padding:10px 20px;
+  margin:5px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+}
 
-  <link href="/m/chunk-common.1b9ec2da.css" rel="stylesheet">
-  <link href="/m/app.fdf0c1b7.css" rel="stylesheet">
-  <link rel="preload" href="/m/splash.73b1be4f.css" as="style" onload="this.rel='stylesheet'">
+.spin { background:#00ffcc; }
+.bet { background:#ffcc00; }
 
- </head>
+input {
+  padding:10px;
+  width:80%;
+  margin:10px 0;
+  border-radius:6px;
+  border:none;
+  text-align:center;
+}
 
- <body class="ps88f2">
-  <div class="loading-img-container"></div>
-  <span id="root"></span>
+.wallet {
+  font-size:18px;
+  margin:10px 0;
+  color:#00ffcc;
+}
+</style>
+</head>
 
-  <script src="/m/vendor.encrypt.v2.dll.js"></script>
-  <script src="/mobile/mc/loadMemberCenter.js?v=latest"></script>
-  <script src="/m/chunk-common.dc47a025.js"></script>
-  <script src="/m/app.f0cd854f.js"></script>
+<body>
 
- </body>
+<div class="container">
+  <h1>🎰 Casino Demo</h1>
+
+  <div class="wallet">Wallet: $<span id="wallet">1000</span></div>
+
+  <input id="bet" type="number" value="10" />
+
+  <div class="slot" id="slot">🍒 🍋 🍇</div>
+
+  <button class="spin" onclick="spin()">SPIN</button>
+  <button class="bet" onclick="addMoney()">+100</button>
+</div>
+
+<script>
+let wallet = 1000;
+
+function updateWallet(){
+  document.getElementById("wallet").innerText = wallet;
+}
+
+function addMoney(){
+  wallet += 100;
+  updateWallet();
+}
+
+function spin(){
+  let bet = parseInt(document.getElementById("bet").value);
+
+  if(wallet < bet){
+    alert("Not enough balance!");
+    return;
+  }
+
+  wallet -= bet;
+
+  const icons = ["🍒","🍋","🍇","🔔","⭐","7️⃣"];
+
+  let r1 = icons[Math.floor(Math.random()*icons.length)];
+  let r2 = icons[Math.floor(Math.random()*icons.length)];
+  let r3 = icons[Math.floor(Math.random()*icons.length)];
+
+  document.getElementById("slot").innerText = `${r1} ${r2} ${r3}`;
+
+  if(r1 === r2 && r2 === r3){
+    let win = bet * 10;
+    wallet += win;
+    alert("JACKPOT! +$" + win);
+  }
+
+  updateWallet();
+}
+
+updateWallet();
+</script>
+
+</body>
 </html>
